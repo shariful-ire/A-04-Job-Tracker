@@ -25,9 +25,8 @@ function renderJobs() {
             <p class="mt-2">${job.description}</p>
 
             <div class="mt-4 flex gap-3">
-                <button class="bg-green-600 text-white px-3 py-1 rounded">Interview</button>
-                <button class="bg-red-600 text-white px-3 py-1 rounded">Rejected</button>
-            </div>
+                <button onclick="setStatus(${job.id}, 'interview')" class="bg-green-600 text-white px-3 py-1 rounded">Interview</button>
+                <button onclick="setStatus(${job.id}, 'rejected')" class="bg-red-600 text-white px-3 py-1 rounded">Rejected</button> </div>
         `;
 
         container.appendChild(card);
@@ -37,3 +36,17 @@ function renderJobs() {
 }
 
 renderJobs();
+
+function setStatus(id, status) {
+    const job = jobs.find(j => j.id === id);
+    job.status = status;
+    updateDashboard();
+}
+
+function updateDashboard() {
+    document.getElementById("interviewCount").innerText =
+        jobs.filter(j => j.status === "interview").length;
+
+    document.getElementById("rejectedCount").innerText =
+        jobs.filter(j => j.status === "rejected").length;
+}
