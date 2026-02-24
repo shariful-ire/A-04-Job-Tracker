@@ -9,11 +9,6 @@
 <body class="bg-slate-100">
 
 <div class="max-w-6xl mx-auto p-6">
-    <h1 class="text-3xl font-bold">Job Application Tracker</h1>
-</div>
-
-
-<div class="max-w-6xl mx-auto p-6">
 
     <h1 class="text-3xl font-bold mb-8">Job Application Tracker</h1>
 
@@ -35,6 +30,21 @@
     </div>
 
 </div>
+
+<!-- Available job section  -->
+
+<div class="flex justify-between mb-4">
+    <h2 class="text-xl font-semibold">Available Jobs</h2>
+    <span id="tabCount">0 jobs</span>
+</div>
+
+<div class="flex gap-3 mb-6">
+    <button class="tab bg-indigo-600 text-white px-4 py-2 rounded" data-tab="all">All</button>
+    <button class="tab bg-gray-200 px-4 py-2 rounded" data-tab="interview">Interview</button>
+    <button class="tab bg-gray-200 px-4 py-2 rounded" data-tab="rejected">Rejected</button>
+</div>
+
+<div id="jobsContainer" class="space-y-6"></div>
 
 <script src="script.js"></script>
 </body>
