@@ -1,4 +1,4 @@
-const jobs = [
+const jobs =[
 { id:1, company:"TechNova", position:"Frontend Developer", location:"Dhaka", type:"Full-time", salary:"80,000 BDT", description:"Develop modern user interfaces.", status:"all" },
 { id:2, company:"CloudSync", position:"Cloud Engineer", location:"Remote", type:"Full-time", salary:"120k USD", description:"Manage cloud infrastructure.", status:"all" },
 { id:3, company:"InnoSoft", position:"Backend Developer", location:"Remote", type:"Full-time", salary:"100,000 BDT", description:"Build secure APIs.", status:"all" },
@@ -12,7 +12,7 @@ const jobs = [
 const container = document.getElementById("jobsContainer");
 let currentTab = "all";
 
-function updateDashboard() {
+function updateDashboard(){
     document.getElementById("totalCount").innerText = jobs.length;
 
     document.getElementById("interviewCount").innerText =
@@ -22,7 +22,7 @@ function updateDashboard() {
         jobs.filter(j => j.status === "rejected").length;
 }
 
-function setStatus(id, status) {
+function setStatus(id, status){
     const job = jobs.find(j => j.id === id);
     if (job) {
         job.status = status;
@@ -31,7 +31,7 @@ function setStatus(id, status) {
     }
 }
 
-function deleteJob(id) {
+function deleteJob(id){
     const index = jobs.findIndex(j => j.id === id);
     if (index !== -1) {
         jobs.splice(index, 1);
@@ -40,17 +40,17 @@ function deleteJob(id) {
     }
 }
 
-function renderJobs() {
+function renderJobs(){
     container.innerHTML = "";
 
-    let filtered = jobs.filter(job => {
+    let filtered = jobs.filter(job =>{
         if (currentTab === "all") return true;
         return job.status === currentTab;
     });
 
     document.getElementById("tabCount").innerText = filtered.length + " jobs";
 
-    if (filtered.length === 0) {
+    if (filtered.length === 0){
         container.innerHTML = `
             <div class="bg-white p-10 text-center rounded shadow">
                 <div class="text-4xl mb-3">📄</div>
@@ -61,7 +61,7 @@ function renderJobs() {
         return;
     }
 
-    filtered.forEach(job => {
+    filtered.forEach(job =>{
 
         const card = document.createElement("div");
         card.className = "bg-white p-6 rounded shadow";
@@ -105,17 +105,16 @@ function renderJobs() {
 
             </div>
         `;
-
         container.appendChild(card);
     });
 }
 
-document.querySelectorAll(".tab").forEach(btn => {
-    btn.addEventListener("click", function() {
+document.querySelectorAll(".tab").forEach(btn =>{
+    btn.addEventListener("click", function(){
 
         currentTab = this.dataset.tab;
 
-        document.querySelectorAll(".tab").forEach(t => {
+        document.querySelectorAll(".tab").forEach(t =>{
             t.classList.remove("bg-indigo-600", "text-white");
             t.classList.add("bg-gray-200");
         });
